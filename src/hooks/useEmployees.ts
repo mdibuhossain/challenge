@@ -7,7 +7,7 @@ export function useEmployees(): EmployeeResult {
   const { fetchWithCache, loading } = useCustomFetch()
   const [employees, setEmployees] = useState<Employee[] | null>(null)
 
-  const fetchAll = useCallback(async () => {
+  const fetchAll = useCallback(async (employeeId: string) => {
     const employeesData = await fetchWithCache<Employee[]>("employees")
     setEmployees(employeesData)
   }, [fetchWithCache])
